@@ -74,3 +74,17 @@ SubGeographyLayerID: "JP.Prefectures"
 
 Source: http://geoenrich.arcgis.com/arcgis/rest/services/World/GeoenrichmentServer/StandardGeographyQuery/execute?sourceCountry=JP&outSR=%7B%22wkid%22%3A102100%2C%22latestWkid%22%3A3857%7D&returnGeometry=true&generalizationLevel=6&returnSubGeographyLayer=true&geographyLayers=JP.Country&geographyQuery=Japan&subGeographyLayer=JP.Prefectures&f=json
 
+##Developer Tips
+
+*Browse global data collection to explore heigerarches quickly
+*Highest quality web service data (for geometry and property data) contained in Esri demographics services (look for 3 digit country code is Map Service Name)
+** http://demographics1.arcgis.com/arcgis/rest/services
+** http://demographics2.arcgis.com/arcgis/rest/services
+** http://demographics3.arcgis.com/arcgis/rest/services
+** http://demographics4.arcgis.com/arcgis/rest/services
+** http://demographics5.arcgis.com/arcgis/rest/services
+*Use Query operation to fetch geometry for desired layers in the map service ``` where=1=1  ``` and ```f=json```
+** Do not query for attributes / properties unless you understand credit model
+** Services often have a limmit on the number of features that can be returned, so it's a good idea to make a request to ```returnCountOnly``` and the paginate requests in chunks of 1000
+*If rough data (generalized at level 6) is all that is needed it's possible to get geometries using a StandardGeographyQuery requests - which can also return centroids
+

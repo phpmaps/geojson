@@ -77,14 +77,17 @@ Source: http://geoenrich.arcgis.com/arcgis/rest/services/World/GeoenrichmentServ
 ##Developer Tips
 
 * Browse global data collection to explore hierarches quickly
-* Highest quality web service data (for geometry and property data) contained in Esri demographics services (look for 3 digit country code is Map Service Name)
+* Highest quality web service data (for geometry and property data) contained in Esri demographics services (look for 3 digit country code in Map Service Name)
  * http://demographics1.arcgis.com/arcgis/rest/services
  * http://demographics2.arcgis.com/arcgis/rest/services
  * http://demographics3.arcgis.com/arcgis/rest/services
  * http://demographics4.arcgis.com/arcgis/rest/services
  * http://demographics5.arcgis.com/arcgis/rest/services
-* Use Query operation to fetch geometry for desired layers in the map service ``` where=1=1  ``` and ```f=json```
+* Use Query operation to fetch geometry for desired layers in the map service ``` where=1=1  ``` and ```f=json``` (spatial reference should be 4326)
 * Do not query for attributes / properties unless you understand credit model
 *  Services often have a limit on the number of features that can be returned, so it's a good idea to make a request to ```returnCountOnly``` and then paginate requests in chunks of 1000
 * If rough data (generalized at level 6) is all that is needed it's possible to get geometries using StandardGeographyQuery requests - which can also return centroids
+* To convert Esri Geometry to GeoJSON use this project - [http://terraformer.io/](http://terraformer.io/)
+* To recreate a map service from a data source use this project - [http://koopjs.github.io/](http://koopjs.github.io/)
+
 
